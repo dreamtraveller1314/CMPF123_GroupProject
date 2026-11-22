@@ -7,6 +7,7 @@
 </head>
 
 <body>
+
   <header id="site-header">
     <div id="brand">
       <a href="index.html">
@@ -39,8 +40,8 @@
   <main id="main-content">
     <section id="hero-banner">
       <img src="images/hero-banner.jpg" alt="Toysverse collection banner" width="900" height="350">
-      <h1>Toysverse</h1>
-      <p>A bright toy museum and collection catalogue for all ages.</p>
+      <h1>Toys that make playtime a party.</h1>
+      <p>Board games for game night, cars that go fast, and plenty more for kids of every age.</p>
       <a href="toys.html" id="explore-btn">Explore Toys</a>
     </section>
 
@@ -86,12 +87,65 @@
       </div>
     </section>
 
-    <section id="background-music">
-      <h2>Background Music</h2>
-      <audio controls>
-        <source src="media/background-music.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
+    <section id="featured-toys">
+      <h2>Featured Toys</h2>
+      <p>Pick a category or filter to see what is in the toy box.</p>
+
+      <div class="filters" id="filters">
+        <button type="button" data-cat="all" class="active">All</button>
+        <button type="button" data-cat="board">Board games</button>
+        <button type="button" data-cat="cars">Cars</button>
+        <button type="button" data-cat="other">More toys</button>
+      </div>
+
+      <div class="grid" id="grid">
+        <article class="card" data-cat="board">
+          <img src="images/treasure-island-quest.jpg" alt="Treasure Island Quest" width="220" height="160">
+          <h3>Treasure Island Quest</h3>
+          <p>Ages 8+</p>
+          <a href="toy-details.html">View Details</a>
+        </article>
+
+        <article class="card" data-cat="board">
+          <img src="images/castle-chess-set.jpg" alt="Castle Chess Set" width="220" height="160">
+          <h3>Castle Chess Set</h3>
+          <p>Ages 6+</p>
+          <a href="toy-details.html">View Details</a>
+        </article>
+
+        <article class="card" data-cat="cars">
+          <img src="images/turbo-racer.jpg" alt="Turbo Racer" width="220" height="160">
+          <h3>Turbo Racer</h3>
+          <p>Ages 3+</p>
+          <a href="toy-details.html">View Details</a>
+        </article>
+
+        <article class="card" data-cat="other">
+          <img src="images/cuddly-bear.jpg" alt="Cuddly Bear" width="220" height="160">
+          <h3>Cuddly Bear</h3>
+          <p>All ages</p>
+          <a href="toy-details.html">View Details</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <h2>About us</h2>
+      <p>We are a student team building a toy collection catalogue that is easy to browse and fun to use.</p>
+      <div class="cols">
+        <div>
+          <h3>Safe to play</h3>
+          <p>Every toy lists the age it is made for.</p>
+        </div>
+        <div>
+          <h3>Easy to find</h3>
+          <p>Browse by category or filter toys quickly.</p>
+        </div>
+        <div>
+          <h3>Made by a team</h3>
+          <p>Group: Toysverse for CMPF123 Introduction to Web Development.</p>
+        </div>
+      </div>
     </section>
   </main>
 
@@ -100,4 +154,5 @@
   </footer>
 
 </body>
+
 </html>
