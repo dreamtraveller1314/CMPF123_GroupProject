@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Document title updated to Toys Details -->
+    <title>Toys Details</title>
+    <style>
+        /* Simple styling to make the page neat and easy to read */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            color: #222222;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a202c;
+            border-bottom: 3px solid #333333;
+            padding-bottom: 10px;
+        }
+
+        /* Simple white boxes for each brand */
+        .card {
+            background-color: #ffffff;
+            border: 1px solid #cccccc;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+        }
+
+        .hotwheels-title {
+            color: #e65100; /* Orange for Hot Wheels */
+        }
+
+        .matchbox-title {
+            color: #c62828; /* Red for Matchbox */
+        }
+
+        /* Simple styling for the toy images */
+        .toy-image {
+            width: 100%;
+            max-width: 320px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid #dddddd;
+            display: block;
+            margin: 10px auto 15px auto;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Simple table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            margin-top: 10px;
+        }
+
+        th, td {
+            border: 1px solid #999999;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #333333;
+            color: #ffffff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Page Title -->
+    <h1>Hot Wheels vs. Matchbox</h1>
+
+    <!-- Section 1: Hot Wheels -->
+    <div class="card">
+        <h2 class="hotwheels-title">1. Hot Wheels</h2>
+        <img
+            class="toy-image"
+            src="https://commons.wikimedia.org/wiki/Special:FilePath/Hot_Wheels_Modellauto.jpg?width=600"
+            alt="Hot Wheels die-cast car"
+            onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22320%22 height=%22180%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23ffe0b2%22/><text x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2220%22 font-weight=%22bold%22 fill=%22%23e65100%22>Hot Wheels Car</text></svg>';"
+        >
+        <ul>
+            <li><strong>Brand:</strong> Mattel (USA)</li>
+            <li><strong>History:</strong> Launched in 1968 with 16 cars to rival Matchbox.</li>
+            <li><strong>Category:</strong> Die-cast cars (1:64)</li>
+            <li><strong>Age:</strong> 3+</li>
+            <li><strong>Materials:</strong> Metal body, plastic wheels</li>
+            <li><strong>Fun fact:</strong> The pink Beach Bomb is one of the rarest toy cars.</li>
+        </ul>
+    </div>
+
+    <!-- Section 2: Matchbox -->
+    <div class="card">
+        <h2 class="matchbox-title">2. Matchbox</h2>
+        <img
+            class="toy-image"
+            src="https://commons.wikimedia.org/wiki/Special:FilePath/Matchbox_Cars.jpg?width=600"
+            alt="Matchbox realistic die-cast cars"
+            onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22320%22 height=%22180%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23ffcdd2%22/><text x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2220%22 font-weight=%22bold%22 fill=%22%23c62828%22>Matchbox Cars</text></svg>';"
+        >
+        <ul>
+            <li><strong>Brand:</strong> Lesney (UK), now Mattel</li>
+            <li><strong>History:</strong> Started in 1953 when Jack Odell made a tiny road roller for his daughter.</li>
+            <li><strong>Category:</strong> Die-cast realistic vehicles</li>
+            <li><strong>Age:</strong> 3+</li>
+            <li><strong>Materials:</strong> Metal body, plastic parts</li>
+            <li><strong>Fun fact:</strong> Its name comes from the matchbox size toys her school allowed.</li>
+        </ul>
+    </div>
+
+    <!-- Section 3: Comparison Table -->
+    <h2>Comparison Table</h2>
+    <table>
+        <tr>
+            <th>Feature</th>
+            <th>Hot Wheels</th>
+            <th>Matchbox</th>
+        </tr>
+        <tr>
+            <td><strong>Maker</strong></td>
+            <td>Mattel</td>
+            <td>Lesney (now Mattel)</td>
+        </tr>
+        <tr>
+            <td><strong>Origin</strong></td>
+            <td>USA</td>
+            <td>UK</td>
+        </tr>
+        <tr>
+            <td><strong>Year</strong></td>
+            <td>1968</td>
+            <td>1953</td>
+        </tr>
+        <tr>
+            <td><strong>Style</strong></td>
+            <td>Fast, fantasy</td>
+            <td>Realistic</td>
+        </tr>
+        <tr>
+            <td><strong>Materials</strong></td>
+            <td>Metal + plastic</td>
+            <td>Metal + plastic</td>
+        </tr>
+    </table>
+
+</body>
+</html>
