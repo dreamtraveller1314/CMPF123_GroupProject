@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html>
-    <?php 
-        $userName = $_POST["user_name"];
-        $userEmail = $_POST["user_email"];
-        $feedbackType = $_POST["feedback_type"];
-        $feedbackMessage = $_POST["feedback_message"];
-        $feedbackDateTime = $_POST["datetime"];
+    <?php
+    //check if the form was submitted via POST  
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+        //collect and sanitize input data  
+        $userName = $_POST["user-name"];
+        $userEmail = $_POST["user-email"];
+        $feedbackType = $_POST["feedback-type"];
+        $feedbackMessage = $_POST["feedback-message"];
+        $feedbackDateTime = $_POST["feedback-datetime"];
 
          //change date format to DD-MM-YYYY
          $feedbackDate = new DateTime();
@@ -30,5 +34,10 @@
                 echo "<script>alert('Your feedback has been successfully submitted.');</script>";
             }
         }
+    } else {
+        //form not submitted via POST, redirect to feedback form
+        header("Location: feedback.html");
+        exit(); 
+    }
     ?>
 </html>
