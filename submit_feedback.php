@@ -1,43 +1,79 @@
+<?php
+// ---------- 1. Connect to the database (WampServer defaults) ----------
+require "config.php";
+
+$conn = mysqli_connect($host, $username, $password, $database);
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+// ---------- 2. Make sure the form was submitted ----------
+if ($_SERVER["REQUEST_METHOD"] != "POST") {
+    die("Please submit the feedback form first.");
+}
+
+// ---------- 3. Get the data from the form ----------
+// The names in brackets must match the name="" attributes in feedback.html
+$user_name     = $_POST["user-name"];
+$user_gender   = $_POST["gender"];
+$user_email    = $_POST["user-email"];
+$feedback_type = $_POST["feedback-type"];
+$feedback      = $_POST["feedback"];
+$datetime      = $_POST["feedback-datetime"];
+
+// ---------- 4. Simple check: no field should be empty ----------
+if ($user_name == "" || $user_gender == "" || $user_email == "" ||
+    $feedback_type == "" || $feedback == "" || $datetime == "") {
+    die("Error: Please fill in all the fields. <a href='feedback.html'>Go back</a>");
+}
+
+// ---------- 5. Save the data into the database ----------
+// The ? are placeholders, which keep the database safe from SQL injection
+$sql  = "INSERT INTO feedback_form
+         (user_name, user_gender, user_email, feedback_type, feedback, datetime)
+         VALUES (?, ?, ?, ?, ?, ?)";
+$stmt = mysqli_prepare($conn, $sql);
+mysqli_stmt_bind_param($stmt, "ssssss",
+    $user_name, $user_gender, $user_email, $feedback_type, $feedback, $datetime);
+
+$saved = mysqli_stmt_execute($stmt);
+
+mysqli_stmt_close($stmt);
+mysqli_close($conn);
+?>
 <!DOCTYPE html>
 <html>
-    <?php
-    //check if the form was submitted via POST  
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+<head>
+    <meta charset="UTF-8">
+    <title>Feedback Received - Toysverse</title>
+</head>
+<body>
 
-        //collect and sanitize input data  
-        $userName = $_POST["user-name"];
-        $userEmail = $_POST["user-email"];
-        $feedbackType = $_POST["feedback-type"];
-        $feedbackMessage = $_POST["feedback-message"];
-        $feedbackDateTime = $_POST["feedback-datetime"];
+<?php if ($saved) { ?>
 
-         //change date format to DD-MM-YYYY
-         $feedbackDate = new DateTime();
+    <h1>Thank you! Your feedback has been received.</h1>
+    <p>Here is a summary of what you submitted:</p>
 
-        //store data into database
-        require "config.php";
+    <!-- htmlspecialchars() makes the user's text safe to show on the page -->
+    <ul>
+        <li><strong>Name:</strong> <?php echo htmlspecialchars($user_name); ?></li>
+        <li><strong>Gender:</strong> <?php echo htmlspecialchars($user_gender); ?></li>
+        <li><strong>Email:</strong> <?php echo htmlspecialchars($user_email); ?></li>
+        <li><strong>Feedback Type:</strong> <?php echo htmlspecialchars($feedback_type); ?></li>
+        <li><strong>Feedback:</strong> <?php echo htmlspecialchars($feedback); ?></li>
+        <li><strong>Date and Time:</strong> <?php echo htmlspecialchars($datetime); ?></li>
+    </ul>
 
-        //create connection with database
-        $link = mysqli_connect($host, $username, $password, $dbname);
+<?php } else { ?>
 
-        //to check if connection is NOT OK
-        if (!$link) {
-            die("Connection problem".mysqli_connect_error($link));//display MySQLI error
-        } else {
-            //connection OK - insert record into a database table
-            $queryInsert = "INSERT INTO feedback_form (user_name, user_email, feedback_type, feedback_message, feedback_datetime) VALUES ('$userName', '$userEmail', '$feedbackType', '$feedbackMessage', '$feedbackDateTime')";
-            $resultInsert = mysqli_query($link, $queryInsert);
-            if (!$resultInsert) { //to check if query result is NOT OK 
-                die("Invalid Query - insert feedback".mysqli_error($link));
-            } else {
-                //query result is OK
-                echo "<script>alert('Your feedback has been successfully submitted.');</script>";
-            }
-        }
-    } else {
-        //form not submitted via POST, redirect to feedback form
-        header("Location: feedback.html");
-        exit(); 
-    }
-    ?>
+    <h1>Sorry, something went wrong. Your feedback was not saved.</h1>
+
+<?php } ?>
+
+<p><a href="feedback.html">Submit another feedback</a> |
+   <a href="view_feedback.php">View all feedback</a> |
+   <a href="index.html">Back to Home</a></p>
+
+</body>
 </html>

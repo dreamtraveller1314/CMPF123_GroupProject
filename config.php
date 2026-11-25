@@ -3,5 +3,5 @@
 $host = "localhost";
 $username = "root";
 $password = "";
-$dbname = "toysverse_user";
+$database = "toysverse_user";
 ?>
