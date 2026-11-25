@@ -1,3 +1,9 @@
+/* =========================================================
+   TOYSVERSE - style.css  (external style sheet)
+   Colours (Toys R Us style): blue #0b4ea2, red #e2231a, yellow #ffd500
+   ========================================================= */
+
+/* ---------- SITE-WIDE (universal + element selectors) ---------- */
 * {
   margin: 0;
   padding: 0;
@@ -467,10 +473,17 @@ video {
 }
 
 .validation-status {
-  margin-top: 15px;
-  padding: 10px;
+  display: block;
+  margin-top: 6px;
+  padding: 8px 10px;
+  font-size: 14px;
   font-weight: bold;
   border-radius: 8px;
+}
+
+/* hide the message box while it is empty */
+.validation-status:empty {
+  display: none;
 }
 
 .validation-status.success {
@@ -481,6 +494,139 @@ video {
 .validation-status.error {
   background-color: #fde8e7;
   color: #b81a12;
+}
+
+/* extra form parts: date/time, gender radios */
+#feedback-card input[type="datetime-local"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #e9eef6;
+  border: 2px solid #c5d4ea;
+  border-radius: 8px;
+}
+
+#feedback-card fieldset {
+  margin-top: 15px;
+  padding: 10px 14px 14px 14px;
+  border: 2px solid #c5d4ea;
+  border-radius: 8px;
+}
+
+#feedback-card legend {
+  padding: 0 6px;
+  font-weight: bold;
+  color: #0b4ea2;
+}
+
+#feedback-card fieldset label {
+  display: inline-block;
+  margin-top: 5px;
+  margin-right: 18px;
+  font-weight: normal;
+  color: #1b2a41;
+}
+
+#main-content > h1 {
+  margin-bottom: 5px;
+}
+
+#main-content > p {
+  margin-bottom: 20px;
+  color: #5b6b82;
+}
+
+/* ---------- TOYS.HTML ---------- */
+#category-header {
+  margin-bottom: 20px;
+}
+
+#category-header p {
+  color: #5b6b82;
+}
+
+#filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.filter-btn {
+  padding: 8px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #0b4ea2;
+  background-color: white;
+  border: 2px solid #0b4ea2;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.filter-btn:hover {
+  background-color: #0b4ea2;
+  color: white;
+}
+
+.filter-btn.active {
+  background-color: #e2231a;
+  border-color: #e2231a;
+  color: white;
+}
+
+.category-card h3 {
+  padding: 0 12px;
+}
+
+.category-card p {
+  padding: 0 12px;
+  margin: 6px 0 12px 0;
+  color: #5b6b82;
+}
+
+.category-card .category-btn {
+  display: inline-block;
+  padding: 8px 20px;
+  margin-bottom: 15px;
+  background-color: #0b4ea2;
+  color: white;
+  font-weight: bold;
+  border-radius: 20px;
+}
+
+.category-card .category-btn:hover {
+  background-color: #e2231a;
+}
+
+/* ---------- ABOUT.HTML ---------- */
+#group-intro {
+  background-color: white;
+  padding: 25px;
+  border-radius: 14px;
+  border-left: 6px solid #e2231a;
+}
+
+#group-intro p {
+  margin-top: 8px;
+}
+
+#about-website {
+  background-color: white;
+  padding: 25px;
+  border-radius: 14px;
+  border-top: 6px solid #ffd500;
+}
+
+.member-card h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.member-card p {
+  font-size: 14px;
+  margin-bottom: 4px;
+  word-wrap: break-word;
 }
 
 /* =========================================================
@@ -521,6 +667,14 @@ video {
   .card-grid { grid-template-columns: repeat(3, 1fr); }
   .grid { grid-template-columns: repeat(2, 1fr); }
   .category-row { grid-template-columns: repeat(2, 1fr); }
+
+  .members-grid {
+    flex-wrap: wrap;
+  }
+
+  .member-card {
+    flex: 1 1 30%;
+  }
 }
 
 /* mobile */

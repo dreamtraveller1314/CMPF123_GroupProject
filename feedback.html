@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Toysverse - Feedback</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -42,7 +44,7 @@
       <form id="feedback-form" action="submit_feedback.php" method="post">
         <div class="form-group">
           <label for="user-name">Name</label>
-          <input type="text" id="user-name" name="user-name" required>
+          <input type="text" id="user-name" name="user-name" minlength="2" maxlength="256" required>
           <span class="validation-status" id="name-status"></span>
         </div>
 
