@@ -18,26 +18,29 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 $user_name     = $_POST["userName"];
 $user_gender   = $_POST["userGender"];
 $user_email    = $_POST["userEmail"];
-$feedback_type = $_POST["userFeedbackType"];
+$feedback_type = $_POST["userFeedback_type"];
 $feedback      = $_POST["userFeedback"];
-
-// 1. Set the timezone to Kuala Lumpur (Malaysia)
-date_default_timezone_set('Asia/Kuala_Lumpur');
-
-// 2. Get the current date and time
-$dateTime = date('Y-m-d H:i:s');
-
+$datetime      = $_POST["userFeedbackDatetime"];
 
 // ---------- 4. Simple check: no field should be empty ----------
 if ($user_name == "" || $user_gender == "" || $user_email == "" ||
-    $feedback_type == "" || $feedback == "" || $dateTime == "") {
+    $feedback_type == "" || $feedback == "" || $datetime == "") {
     die("Error: Please fill in all the fields. <a href='feedback.html'>Go back</a>");
 }
 
 // ---------- 5. Save the data into the database ----------
 // The ? are placeholders, which keep the database safe from SQL injection
 $sql  = "INSERT INTO feedback_form
-         ($user_name, $user_gender, $user_email, $feedback_type, $feedback, $dateTime)";
+         (userEmail, userName, userGender, userFeedbackType, userFeedback, userFeedbackDateTime)
+         VALUES (?, ?, ?, ?, ?, ?)";
+$stmt = mysqli_prepare($conn, $sql);
+mysqli_stmt_bind_param($stmt, "ssssss",
+    $user_name, $user_gender, $user_email, $feedback_type, $feedback, $datetime);
+
+$saved = mysqli_stmt_execute($stmt);
+
+mysqli_stmt_close($stmt);
+mysqli_close($conn);
 ?>
 <!DOCTYPE html>
 <html>
@@ -46,6 +49,9 @@ $sql  = "INSERT INTO feedback_form
     <title>Feedback Received - Toysverse</title>
 </head>
 <body>
+
+<?php if ($saved) { ?>
+
     <h1>Thank you! Your feedback has been received.</h1>
     <p>Here is a summary of what you submitted:</p>
 
@@ -56,8 +62,14 @@ $sql  = "INSERT INTO feedback_form
         <li><strong>Email:</strong> <?php echo htmlspecialchars($user_email); ?></li>
         <li><strong>Feedback Type:</strong> <?php echo htmlspecialchars($feedback_type); ?></li>
         <li><strong>Feedback:</strong> <?php echo htmlspecialchars($feedback); ?></li>
-        <li><strong>Date and Time:</strong> <?php echo htmlspecialchars($dateTime); ?></li>
+        <li><strong>Date and Time:</strong> <?php echo htmlspecialchars($datetime); ?></li>
     </ul>
+
+<?php } else { ?>
+
+    <h1>Sorry, something went wrong. Your feedback was not saved.</h1>
+
+<?php } ?>
 
 <p><a href="feedback.html">Submit another feedback</a> |
    <a href="view_feedback.php">View all feedback</a> |
