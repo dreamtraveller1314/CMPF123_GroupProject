@@ -41,8 +41,8 @@
     <div id="feedback-card">
       <form id="feedback-form" action="submit_feedback.php" method="post">
         <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" required>
+          <label for="user-name">Name</label>
+          <input type="text" id="user-name" name="user-name" required>
           <span class="validation-status" id="name-status"></span>
         </div>
 
@@ -55,14 +55,14 @@
         </fieldset>
 
         <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required>
+          <label for="user-email">Email</label>
+          <input type="email" id="user-email" name="user-email" required>
           <span class="validation-status" id="email-status"></span>
         </div>
 
         <div class="form-group">
           <label for="feedback-type">Type of Feedback</label>
-          <select id="feedback-type" name="feedback_type" required>
+          <select id="feedback-type" name="feedback-type" required>
             <option value="">-- Select Type --</option>
             <option value="Suggestion">Suggestion</option>
             <option value="Complaint">Complaint</option>
@@ -79,7 +79,7 @@
 
         <div class="form-group">
           <label for="feedback-datetime">Date and Time</label>
-          <input type="text" id="feedback-datetime" name="datetime" readonly>
+          <input type="datetime-local" id="feedback-datetime" name="feedback-datetime" readonly>
           <span class="validation-status" id="datetime-status"></span>
         </div>
 
