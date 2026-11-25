@@ -15,32 +15,29 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 
 // ---------- 3. Get the data from the form ----------
 // The names in brackets must match the name="" attributes in feedback.html
-$user_name     = $_POST["user-name"];
-$user_gender   = $_POST["gender"];
-$user_email    = $_POST["user-email"];
-$feedback_type = $_POST["feedback-type"];
-$feedback      = $_POST["feedback"];
-$datetime      = $_POST["feedback-datetime"];
+$user_name     = $_POST["userName"];
+$user_gender   = $_POST["userGender"];
+$user_email    = $_POST["userEmail"];
+$feedback_type = $_POST["userFeedbackType"];
+$feedback      = $_POST["userFeedback"];
+
+// 1. Set the timezone to Kuala Lumpur (Malaysia)
+date_default_timezone_set('Asia/Kuala_Lumpur');
+
+// 2. Get the current date and time
+$dateTime = date('Y-m-d H:i:s');
+
 
 // ---------- 4. Simple check: no field should be empty ----------
 if ($user_name == "" || $user_gender == "" || $user_email == "" ||
-    $feedback_type == "" || $feedback == "" || $datetime == "") {
+    $feedback_type == "" || $feedback == "" || $dateTime == "") {
     die("Error: Please fill in all the fields. <a href='feedback.html'>Go back</a>");
 }
 
 // ---------- 5. Save the data into the database ----------
 // The ? are placeholders, which keep the database safe from SQL injection
 $sql  = "INSERT INTO feedback_form
-         (user_name, user_gender, user_email, feedback_type, feedback, datetime)
-         VALUES (?, ?, ?, ?, ?, ?)";
-$stmt = mysqli_prepare($conn, $sql);
-mysqli_stmt_bind_param($stmt, "ssssss",
-    $user_name, $user_gender, $user_email, $feedback_type, $feedback, $datetime);
-
-$saved = mysqli_stmt_execute($stmt);
-
-mysqli_stmt_close($stmt);
-mysqli_close($conn);
+         ($user_name, $user_gender, $user_email, $feedback_type, $feedback, $dateTime)";
 ?>
 <!DOCTYPE html>
 <html>
@@ -49,9 +46,6 @@ mysqli_close($conn);
     <title>Feedback Received - Toysverse</title>
 </head>
 <body>
-
-<?php if ($saved) { ?>
-
     <h1>Thank you! Your feedback has been received.</h1>
     <p>Here is a summary of what you submitted:</p>
 
@@ -62,14 +56,8 @@ mysqli_close($conn);
         <li><strong>Email:</strong> <?php echo htmlspecialchars($user_email); ?></li>
         <li><strong>Feedback Type:</strong> <?php echo htmlspecialchars($feedback_type); ?></li>
         <li><strong>Feedback:</strong> <?php echo htmlspecialchars($feedback); ?></li>
-        <li><strong>Date and Time:</strong> <?php echo htmlspecialchars($datetime); ?></li>
+        <li><strong>Date and Time:</strong> <?php echo htmlspecialchars($dateTime); ?></li>
     </ul>
-
-<?php } else { ?>
-
-    <h1>Sorry, something went wrong. Your feedback was not saved.</h1>
-
-<?php } ?>
 
 <p><a href="feedback.html">Submit another feedback</a> |
    <a href="view_feedback.php">View all feedback</a> |

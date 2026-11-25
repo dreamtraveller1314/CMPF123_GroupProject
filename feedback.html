@@ -44,27 +44,27 @@
       <form id="feedback-form" action="submit_feedback.php" method="post">
         <div class="form-group">
           <label for="user-name">Name</label>
-          <input type="text" id="user-name" name="user-name" minlength="2" maxlength="256" required>
+          <input type="text" id="user-name" name="userName" minlength="2" maxlength="256" required>
           <span class="validation-status" id="name-status"></span>
         </div>
 
         <fieldset class="form-group">
           <legend>Gender</legend>
-          <label><input type="radio" name="gender" value="Male" required> Male</label>
-          <label><input type="radio" name="gender" value="Female"> Female</label>
-          <label><input type="radio" name="gender" value="Other"> Other</label>
+          <label><input type="radio" name="userGender" value="Male" required> Male</label>
+          <label><input type="radio" name="userGender" value="Female"> Female</label>
+          <label><input type="radio" name="userGender" value="Other"> Other</label>
           <span class="validation-status" id="gender-status"></span>
         </fieldset>
 
         <div class="form-group">
           <label for="user-email">Email</label>
-          <input type="email" id="user-email" name="user-email" required>
+          <input type="email" id="user-email" name="userEmail" required>
           <span class="validation-status" id="email-status"></span>
         </div>
 
         <div class="form-group">
           <label for="feedback-type">Type of Feedback</label>
-          <select id="feedback-type" name="feedback-type" required>
+          <select id="feedback-type" name="userFeedbackType" required>
             <option value="">-- Select Type --</option>
             <option value="Suggestion">Suggestion</option>
             <option value="Complaint">Complaint</option>
@@ -75,13 +75,13 @@
 
         <div class="form-group">
           <label for="feedback-message">Feedback</label>
-          <textarea id="feedback-message" name="feedback" rows="6" cols="40" required></textarea>
+          <textarea id="feedback-message" name="userFeedback" rows="6" cols="40" required></textarea>
           <span class="validation-status" id="feedback-status"></span>
         </div>
 
         <div class="form-group">
           <label for="feedback-datetime">Date and Time</label>
-          <input type="datetime-local" id="feedback-datetime" name="feedback-datetime" required>
+          <input type="datetime-local" id="feedback-datetime" name="userFeedbackDateTime" required>
           <span class="validation-status" id="datetime-status"></span>
         </div>
 
