@@ -473,10 +473,17 @@ video {
 }
 
 .validation-status {
-  margin-top: 15px;
-  padding: 10px;
+  display: block;
+  margin-top: 6px;
+  padding: 8px 10px;
+  font-size: 14px;
   font-weight: bold;
   border-radius: 8px;
+}
+
+/* hide the message box while it is empty */
+.validation-status:empty {
+  display: none;
 }
 
 .validation-status.success {
@@ -487,6 +494,47 @@ video {
 .validation-status.error {
   background-color: #fde8e7;
   color: #b81a12;
+}
+
+/* extra form parts: date/time, gender radios */
+#feedback-card input[type="datetime-local"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #e9eef6;
+  border: 2px solid #c5d4ea;
+  border-radius: 8px;
+}
+
+#feedback-card fieldset {
+  margin-top: 15px;
+  padding: 10px 14px 14px 14px;
+  border: 2px solid #c5d4ea;
+  border-radius: 8px;
+}
+
+#feedback-card legend {
+  padding: 0 6px;
+  font-weight: bold;
+  color: #0b4ea2;
+}
+
+#feedback-card fieldset label {
+  display: inline-block;
+  margin-top: 5px;
+  margin-right: 18px;
+  font-weight: normal;
+  color: #1b2a41;
+}
+
+#main-content > h1 {
+  margin-bottom: 5px;
+}
+
+#main-content > p {
+  margin-bottom: 20px;
+  color: #5b6b82;
 }
 
 /* ---------- TOYS.HTML ---------- */
