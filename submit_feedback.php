@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
     <?php 
-        $userName = $_POST["user-name"];
-        $userEmail = $_POST["user-email"];
-        $feedbackType = $_POST["feedback-type"];
-        $feedbackMessage = $_POST["feedback-message"];
-        $feedbackDateTime = $_POST["feedback-datetime"];
+        $userName = $_POST["user_name"];
+        $userEmail = $_POST["user_email"];
+        $feedbackType = $_POST["feedback_type"];
+        $feedbackMessage = $_POST["feedback_message"];
+        $feedbackDateTime = $_POST["datetime"];
 
-        //change date format to DD-MM-YYYY
-        $feedbackDate = new DateTime();
+         //change date format to DD-MM-YYYY
+         $feedbackDate = new DateTime();
 
         //store data into database
         require "config.php";
