@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Toysverse - Puzzles</title>
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+</head>
+
+<body>
+
+  <header id="site-header">
+    <div id="brand">
+      <a href="index.html">
+        <img src="images/toysverse-logo.png" alt="Toysverse logo" width="40" height="40">
+        <span>Toysverse</span>
+      </a>
+    </div>
+    <nav id="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="toys.html" class="active">Toys</a></li>
+        <li><a href="feedback.html">Feedback</a></li>
+        <li><a href="about.html">About Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <aside id="sidebar">
+    <h2>Categories</h2>
+    <ul id="category-menu">
+      <li><a href="toys-action-figures.html">Action Figures</a></li>
+      <li><a href="toys-puzzle.html">Puzzles</a></li>
+      <li><a href="toys-cars.html">Cars</a></li>
+      <li><a href="toys-building-blocks.html">Building Blocks</a></li>
+      <li><a href="toys-kids-toys.html">Kids Toys</a></li>
+    </ul>
+  </aside>
+
+  <main id="main-content">
+    <section id="details-header">
+      <h1>Puzzle</h1>
+      <p>Brain teasers, jigsaw sets, and problem-solving toys that build focus, spatial thinking, and creativity for players of all ages.</p>
+    </section>
+
+    <section id="toy-details-container" class="toy-details-row">
+
+        <article class="toy-detail-card puzzle-type" data-puzzle-type="jigsaw">
+        <h2>Type 1: Jigsaw Puzzles</h2>
+        <p class="toy-description">Interlocking picture pieces that players fit together to form a full image or scene.</p>
+        <p><b>Popular Brand:</b> <span class="toy-brand">Ravensburger</span></p>
+
+        <div class="toy-gallery">
+            <img class="toy-main-img" src="images/jigsaw-puzzle.jpg" alt="Jigsaw puzzle main photo" width="260" height="200">
+        </div>
+
+        <h3>3D Modelling</h3>
+        <div class="toy-3d-frame">
+            <model-viewer
+            src="images/jigsaw.glb"
+            alt="3D model of Jigsaw Puzzle"
+            auto-rotate
+            camera-controls
+            style="width: 260px; height: 200px;">
+            </model-viewer>
+        </div>
+        </article>
+
+        <article class="toy-detail-card puzzle-type" data-puzzle-type="mechanical">
+        <h2>Type 2: Mechanical & Twisting Puzzles</h2>
+        <p class="toy-description">
+            <b>Example — 3x3 Classic Twisty Cube:</b> Twist and rotate layers to mix and solve matching color faces using spatial reasoning and move patterns.
+        </p>
+        <p><b>Popular Brand:</b> <span class="toy-brand">Rubik's</span></p>
+
+        <div class="toy-gallery">
+            <img class="toy-main-img" src="images/twisting-puzzle.jpg" alt="3x3 twisty cube main photo" width="260" height="200">
+        </div>
+
+        <h3>3D Modelling</h3>
+        <div class="toy-3d-frame">
+            <model-viewer
+            src="images/rubik.glb"
+            alt="3D model of 3x3 twisty cube"
+            auto-rotate
+            camera-controls
+            style="width: 260px; height: 200px;">
+            </model-viewer>
+        </div>
+        </article>
+
+        <article class="toy-detail-card puzzle-type" data-puzzle-type="word">
+        <h2>Type 3: Crossword, Word & Trivia Puzzles</h2>
+        <p class="toy-description">
+            <b>Example — Scrabble Word ; Letter-Tile Set:</b> Form interlocking words on a board using letter tiles and clues in a familiar word-puzzle format.
+        </p>
+        <p><b>Popular Brand:</b> <span class="toy-brand">Mattel</span></p>
+
+        <div class="toy-gallery">
+            <img class="toy-main-img" src="images/word-puzzle.jpg" alt="Scrabble word puzzle main photo" width="260" height="200">
+        </div>
+        </article>
+
+    </section>
+
+    <nav id="toy-pagination">
+      <a href="toys-action-figures.html" id="back-to-category">Back</a>
+      <a href="toys-cars.html" id="next-toy">Next</a>
+    </nav>
+  </main>
+
+  <footer id="site-footer">
+    <p>Group: Toysverse</p>
+  </footer>
+
+</body>
+
+</html>
