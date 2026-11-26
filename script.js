@@ -296,3 +296,48 @@ if (feedbackForm) {
     };
 
 }
+
+// SHELL MUSIC BRIDGE (WHEN INSIDE shell.html)
+
+var musicButtons = document.querySelectorAll(".music-toggle-btn");
+var localBgMusic = document.getElementById("bg-music");
+
+function setMusicButtonLabels(isPlaying) {
+    var label = isPlaying ? "Pause Music" : "Play Music";
+    musicButtons.forEach(function(btn) {
+        btn.textContent = label;
+    });
+}
+
+if (musicButtons.length > 0) {
+    if (window.parent && window.parent !== window) {
+        musicButtons.forEach(function(btn) {
+            btn.onclick = function() {
+                window.parent.postMessage({ type: "TOGGLE_MUSIC" }, "*");
+            };
+        });
+
+        window.addEventListener("message", function(event) {
+            if (event.data && event.data.type === "MUSIC_STATE") {
+                setMusicButtonLabels(Boolean(event.data.isPlaying));
+            }
+        });
+
+        window.parent.postMessage({ type: "GET_MUSIC_STATE" }, "*");
+    } else if (localBgMusic) {
+        localBgMusic.volume = 0.25;
+        musicButtons.forEach(function(btn) {
+            btn.onclick = function() {
+                if (localBgMusic.paused) {
+                    localBgMusic.play().then(function() {
+                        setMusicButtonLabels(true);
+                    }).catch(function() {});
+                } else {
+                    localBgMusic.pause();
+                    setMusicButtonLabels(false);
+                }
+            };
+        });
+        setMusicButtonLabels(!localBgMusic.paused);
+    }
+}
