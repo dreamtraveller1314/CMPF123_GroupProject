@@ -296,16 +296,18 @@ if (feedbackForm) {
     };
 
 }
-
 // SHELL MUSIC BRIDGE (WHEN INSIDE shell.html)
 
-var musicButtons = document.querySelectorAll(".music-toggle-btn");
+var musicButtons = document.querySelectorAll(".music-toggle-btn, #home-speaker-btn");
 var localBgMusic = document.getElementById("bg-music");
 
 function setMusicButtonLabels(isPlaying) {
-    var label = isPlaying ? "Pause Music" : "Play Music";
     musicButtons.forEach(function(btn) {
-        btn.textContent = label;
+        if (btn.id === "home-speaker-btn") {
+            btn.textContent = isPlaying ? "🔊" : "🔇";
+        } else {
+            btn.textContent = isPlaying ? "Pause Music" : "Play Music";
+        }
     });
 }
 
