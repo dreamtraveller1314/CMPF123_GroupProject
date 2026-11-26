@@ -1,12 +1,3 @@
-/* =========================================================
-   TOYSVERSE - style.css  (external style sheet)
-   Colours (Toys R Us style): blue #0b4ea2, red #e2231a, yellow #ffd500
-   ========================================================= */
-
-/* ---------- SITE-WIDE (universal + element selectors) ---------- */
-/* Universal selector (*): removes the browser's default margin and padding
-   so every page starts equal. box-sizing makes width include padding + border,
-   so boxes don't grow bigger than expected. */
 * {
   margin: 0;
   padding: 0;
