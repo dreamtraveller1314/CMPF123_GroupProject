@@ -914,3 +914,26 @@ video {
   padding: 7px 18px;
   border-radius: 20px;
 }
+
+/* ---------- ILLUSTRATIVE VISUAL (CROPPED, NO STRETCHING) ---------- */
+.illustrative-heading {
+  text-align: center;
+  margin-top: 24px;
+  margin-bottom: 14px;
+}
+
+.illustrative-visual-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.illustrative-visual-row img {
+  width: 360px;
+  height: 290px;
+  max-width: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px;
+}
