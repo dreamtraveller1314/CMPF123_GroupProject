@@ -455,6 +455,21 @@ video {
   height: 250px;
   max-width: 100%;
   object-fit: cover;
+  margin: 0 10px 10px 0;
+}
+
+/* spacing for the text inside a detail card (the * reset removed it) */
+.toy-detail-card h2 {
+  margin-top: 12px;
+}
+
+.toy-detail-card h3 {
+  margin-top: 15px;
+  margin-bottom: 8px;
+}
+
+.toy-detail-card p {
+  margin-bottom: 8px;
 }
 
 /* title area on the category detail pages */
@@ -864,4 +879,38 @@ video {
   .toy-details-row {
     flex-direction: column;
   }
+}
+
+/*BACKGROUND MUSIC BUTTON*/
+.music-control {
+  display: inline-block;
+}
+
+.hero-music {
+  margin: 20px 25px 25px 0;
+  vertical-align: middle;
+}
+
+.footer-music {
+  margin-top: 10px;
+}
+
+.music-toggle-btn {
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #083a7a;
+  background-color: #ffd500;
+  border: 2px solid #ffd500;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.music-toggle-btn:hover {
+  background-color: #e6bf00;
+}
+
+.footer-music .music-toggle-btn {
+  padding: 7px 18px;
+  border-radius: 20px;
 }

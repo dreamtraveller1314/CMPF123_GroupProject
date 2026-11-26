@@ -40,11 +40,13 @@
 
   <main id="main-content">
     <section id="hero-banner">
-      <img src="images/background/hero-banner.jpg" alt="Toysverse collection banner" width="900" height="350">
+      <img src="images/background/toysverse-banner.png" alt="Toysverse collection banner" width="900" height="350">
       <h1>Toys that make playtime a party.</h1>
       <p>Board games for game night, cars that go fast, and plenty more for kids of every age.</p>
       <a href="toys.html" id="explore-btn">Explore Toys</a>
-      <button id="home-speaker-btn" type="button" aria-label="Play or pause music">🔇</button>
+      <div class="music-control hero-music">
+        <button type="button" class="music-toggle-btn">Play Music</button>
+      </div>
     </section>
 
     <section id="promo-video">
@@ -79,7 +81,7 @@
         </div>
         <div class="category-card">
           <a href="toys-building-blocks.html">
-            <img src="images/building_blocks/cat-building-blocks.jpg" alt="Building Blocks" width="200" height="150">
+            <img src="images/building_blocks/cat-building-blocks.jpeg" alt="Building Blocks" width="200" height="150">
             <h3>Building Blocks</h3>
           </a>
         </div>
@@ -158,28 +160,18 @@ appreciate the creativity and uniqueness behind every toy. At Toysverse, every t
       </div>
     </section>
   </main>
+  
 
   <footer id="site-footer">
     <p>Group: Toysverse</p>
+    <div class="music-control footer-music">
+      <button type="button" class="music-toggle-btn">Play Music</button>
+      <audio id="bg-music" loop preload="none">
+        <source src="Backgroundmusic.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+    
   </footer>
-
-  <script src="script.js"></script>
-  <script>
-  const homeSpeakerBtn = document.getElementById("home-speaker-btn");
-
-  homeSpeakerBtn.addEventListener("click", () => {
-    window.parent.postMessage({ type: "TOGGLE_MUSIC" }, "*");
-  });
-
-  window.addEventListener("message", (event) => {
-    if (event.data && event.data.type === "MUSIC_STATE") {
-      homeSpeakerBtn.textContent = event.data.isPlaying ? "🔊" : "🔇";
-    }
-  });
-
-  window.parent.postMessage({ type: "GET_MUSIC_STATE" }, "*");
-</script>
-
+<script src="script.js"></script>
 </body>
-
 </html>

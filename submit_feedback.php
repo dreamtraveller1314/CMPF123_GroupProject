@@ -20,7 +20,10 @@ $sql = "INSERT INTO feedback_form (userEmail, userName, userGender, userFeedback
 VALUES ('$email', '$name', '$gender', '$feedbackType', '$feedback', '$dateTime')";
 
 if (mysqli_query($conn, $sql)) {
-    echo "Feedback submitted successfully!";
+    echo "<script>
+        alert('Feedback submitted successfully!');
+        window.location.href = 'feedback.html';
+        </script>";
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
