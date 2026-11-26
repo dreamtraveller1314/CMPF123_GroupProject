@@ -44,14 +44,14 @@
       <h1>Toys that make playtime a party.</h1>
       <p>Board games for game night, cars that go fast, and plenty more for kids of every age.</p>
       <a href="toys.html" id="explore-btn">Explore Toys</a>
+      <button id="home-speaker-btn" type="button" aria-label="Play or pause music">🔇</button>
     </section>
 
     <section id="promo-video">
       <h2>See Toysverse in Action</h2>
       <p>Watch our short video to see what is inside the toy box.</p>
-      <video controls preload="metadata" poster="images/video-poster.jpg" width="800" height="450">
+      <video controls preload="metadata" width="800" height="450">
         <source src="videos/toysverse-promo.mp4" type="video/mp4">
-        <source src="videos/toysverse-promo.webm" type="video/webm">
         Your browser does not support the video tag.
       </video>
     </section>
@@ -108,35 +108,40 @@
           <img src="images/kids_toys/treasure-island-quest.jpg" alt="Treasure Island Quest" width="220" height="160">
           <h3>Treasure Island Quest</h3>
           <p>Ages 8+</p>
-          <a href="toy-details.html">View Details</a>
+          <a href="toys-kids-toys.html">View Details</a>
         </article>
 
         <article class="card" data-cat="board">
           <img src="images/puzzles/castle-chess-set.jpg" alt="Castle Chess Set" width="220" height="160">
           <h3>Castle Chess Set</h3>
           <p>Ages 6+</p>
-          <a href="toy-details.html">View Details</a>
+          <a href="toys-puzzles.html">View Details</a>
         </article>
 
         <article class="card" data-cat="cars">
           <img src="images/cars/turbo-racer.jpg" alt="Turbo Racer" width="220" height="160">
           <h3>Turbo Racer</h3>
           <p>Ages 3+</p>
-          <a href="toy-details.html">View Details</a>
+          <a href="toys-cars.html">View Details</a>
         </article>
 
         <article class="card" data-cat="other">
           <img src="images/kids_toys/cuddly-bear.jpg" alt="Cuddly Bear" width="220" height="160">
           <h3>Cuddly Bear</h3>
           <p>All ages</p>
-          <a href="toy-details.html">View Details</a>
+          <a href="toys-kids-toys.html">View Details</a>
         </article>
       </div>
     </section>
 
     <section class="about" id="about">
       <h2>About us</h2>
-      <p>We are a student team building a toy collection catalogue that is easy to browse and fun to use.</p>
+      <p>About Us
+Welcome to Toysverse, your gateway to the wonderful world of toys! We are a platform dedicated to showcasing a 
+diverse collection of toys, featuring their history, categories, materials, recommended age ranges, and 
+interesting facts. Our goal is to help toy enthusiasts, parents, and curious minds discover, explore, and 
+appreciate the creativity and uniqueness behind every toy. At Toysverse, every toy has a story worth sharing!
+</p>
       <div class="cols">
         <div>
           <h3>Safe to play</h3>
@@ -159,6 +164,21 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+  const homeSpeakerBtn = document.getElementById("home-speaker-btn");
+
+  homeSpeakerBtn.addEventListener("click", () => {
+    window.parent.postMessage({ type: "TOGGLE_MUSIC" }, "*");
+  });
+
+  window.addEventListener("message", (event) => {
+    if (event.data && event.data.type === "MUSIC_STATE") {
+      homeSpeakerBtn.textContent = event.data.isPlaying ? "🔊" : "🔇";
+    }
+  });
+
+  window.parent.postMessage({ type: "GET_MUSIC_STATE" }, "*");
+</script>
 
 </body>
 
