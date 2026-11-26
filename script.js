@@ -1,11 +1,16 @@
 // FEATURED TOYS FILTERING
 
-var filterButtons = document.querySelectorAll("#filters button");
+var featuredFilterButtons = document.querySelectorAll("#filters button");
 var toyCards = document.querySelectorAll("#grid .card");
 
-filterButtons.forEach(function(button) {
+featuredFilterButtons.forEach(function(button) {
 
     button.onclick = function() {
+
+        featuredFilterButtons.forEach(function(btn) {
+            btn.classList.remove("active");
+        });
+        button.classList.add("active");
 
         var category = button.getAttribute("data-cat");
 
@@ -30,12 +35,17 @@ filterButtons.forEach(function(button) {
 
 // CATEGORY FILTERING
 
-var filterButtons = document.querySelectorAll(".filter-btn");
+var categoryFilterButtons = document.querySelectorAll(".filter-btn");
 var categoryCards = document.querySelectorAll(".category-card");
 
-filterButtons.forEach(function(button) {
+categoryFilterButtons.forEach(function(button) {
 
     button.onclick = function() {
+
+        categoryFilterButtons.forEach(function(btn) {
+            btn.classList.remove("active");
+        });
+        button.classList.add("active");
 
         var selectedCategory = button.getAttribute("data-filter");
 
@@ -301,4 +311,3 @@ if (feedbackForm) {
     };
 
 }
-
