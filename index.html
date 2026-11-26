@@ -79,7 +79,7 @@
         </div>
         <div class="category-card">
           <a href="toys-building-blocks.html">
-            <img src="images/building_blocks/plus-plus1.webp" alt="Building Blocks" width="200" height="150">
+            <img src="images/building_blocks/cat-building-blocks.jpeg" alt="Building Blocks" width="200" height="150">
             <h3>Building Blocks</h3>
           </a>
         </div>
@@ -112,7 +112,7 @@
         </article>
 
         <article class="card" data-cat="board">
-          <img src="images/puzzles/castle-chess-set.jpg" alt="Castle Chess Set" width="220" height="160">
+          <img src="images/puzzles/castle-chess-set.jfif" alt="Castle Chess Set" width="220" height="160">
           <h3>Castle Chess Set</h3>
           <p>Ages 6+</p>
           <a href="toys-puzzles.html">View Details</a>
@@ -179,21 +179,6 @@
   </nav>
 </footer>
 <script src="script.js"></script>
-  <script>
-  const homeSpeakerBtn = document.getElementById("home-speaker-btn");
-
-  homeSpeakerBtn.addEventListener("click", () => {
-    window.parent.postMessage({ type: "TOGGLE_MUSIC" }, "*");
-  });
-
-  window.addEventListener("message", (event) => {
-    if (event.data && event.data.type === "MUSIC_STATE") {
-      homeSpeakerBtn.textContent = event.data.isPlaying ? "🔊" : "🔇";
-    }
-  });
-
-  window.parent.postMessage({ type: "GET_MUSIC_STATE" }, "*");
-</script>
 </body>
 
 </html>
