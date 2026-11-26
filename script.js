@@ -1,11 +1,16 @@
 // FEATURED TOYS FILTERING
 
-var filterButtons = document.querySelectorAll("#filters button");
+var featuredFilterButtons = document.querySelectorAll("#filters button");
 var toyCards = document.querySelectorAll("#grid .card");
 
-filterButtons.forEach(function(button) {
+featuredFilterButtons.forEach(function(button) {
 
     button.onclick = function() {
+
+        featuredFilterButtons.forEach(function(btn) {
+            btn.classList.remove("active");
+        });
+        button.classList.add("active");
 
         var category = button.getAttribute("data-cat");
 
@@ -30,12 +35,17 @@ filterButtons.forEach(function(button) {
 
 // CATEGORY FILTERING
 
-var filterButtons = document.querySelectorAll(".filter-btn");
+var categoryFilterButtons = document.querySelectorAll(".filter-btn");
 var categoryCards = document.querySelectorAll(".category-card");
 
-filterButtons.forEach(function(button) {
+categoryFilterButtons.forEach(function(button) {
 
     button.onclick = function() {
+
+        categoryFilterButtons.forEach(function(btn) {
+            btn.classList.remove("active");
+        });
+        button.classList.add("active");
 
         var selectedCategory = button.getAttribute("data-filter");
 
@@ -128,20 +138,75 @@ if (container && template) {
 
 // FEEDBACK FORM VALIDATION
 
-// AUTO DATE AND TIME
+// FORMAT LOCAL DATETIME FOR datetime-local INPUT (YYYY-MM-DDTHH:MM)
+
+function formatLocalDateTime(dateObj) {
+
+    var year = dateObj.getFullYear();
+    var month = String(dateObj.getMonth() + 1).padStart(2, "0");
+    var day = String(dateObj.getDate()).padStart(2, "0");
+    var hours = String(dateObj.getHours()).padStart(2, "0");
+    var minutes = String(dateObj.getMinutes()).padStart(2, "0");
+
+    return year + "-" + month + "-" + day + "T" + hours + ":" + minutes;
+
+}
+
+// AUTO DATE AND TIME + SET MAX TO NOW (NO FUTURE DATES)
 
 var dateTime = document.getElementById("feedback-datetime");
 
 if (dateTime) {
 
     var currentDate = new Date();
+    var formattedNow = formatLocalDateTime(currentDate);
 
-    dateTime.value = currentDate.toLocaleString();
+    dateTime.setAttribute("max", formattedNow);
 
-    document.getElementById("datetime-status").innerHTML = "Date and time recorded.";
+    if (dateTime.value == "") {
+        dateTime.value = formattedNow;
+    }
+
+    document.getElementById("datetime-status").innerHTML = "Date and time recorded (today or earlier only).";
 
 }
 
+// DATE AND TIME VALIDATION
+
+function checkDateTime() {
+
+    var dtInput = document.getElementById("feedback-datetime");
+    var statusEl = document.getElementById("datetime-status");
+
+    if (!dtInput) {
+        return true;
+    }
+
+    var now = new Date();
+    var currentMax = formatLocalDateTime(now);
+    dtInput.setAttribute("max", currentMax);
+
+    if (dtInput.value == "") {
+        statusEl.innerHTML = "Please select a date and time.";
+        return false;
+    }
+
+    var selectedDate = new Date(dtInput.value);
+
+    if (isNaN(selectedDate.getTime())) {
+        statusEl.innerHTML = "Invalid date and time.";
+        return false;
+    }
+
+    if (selectedDate > now) {
+        statusEl.innerHTML = "Future date or time is not allowed. Choose today or an earlier day.";
+        return false;
+    }
+
+    statusEl.innerHTML = "Valid date and time.";
+    return true;
+
+}
 
 // NAME VALIDATION
 
@@ -284,7 +349,9 @@ if (feedbackForm) {
 
         var validFeedback = checkFeedback();
 
-        if (validName && validGender && validEmail && validType && validFeedback) {
+        var validDateTime = checkDateTime();
+
+        if (validName && validGender && validEmail && validType && validFeedback && validDateTime) {
 
             window.alert("Thank you for your feedback!");
 
@@ -301,4 +368,3 @@ if (feedbackForm) {
     };
 
 }
-
