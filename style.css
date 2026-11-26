@@ -687,6 +687,60 @@ video {
   color: #5b6b82;
 }
 
+/* ---------- CONTACT-US.HTML ---------- */
+/* contact card: white box with red top line and blue left border */
+.page .details {
+  max-width: 640px;
+  background-color: white;
+  padding: 25px;
+  border-radius: 14px;
+  border-top: 6px solid #e2231a;
+  border-left: 6px solid #0b4ea2;
+}
+
+/* 'Get in touch' title: blue with a yellow underline */
+.page .details h2 {
+  color: #0b4ea2;
+  border-bottom: 3px solid #ffd500;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+
+/* definition list: 2 columns on desktop (label + value) */
+.page .details dl {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 12px 16px;
+  align-items: center;
+}
+
+/* label text (Email / Instagram): red and bold */
+.page .details dt {
+  font-weight: bold;
+  color: #e2231a;
+}
+
+.page .details dd {
+  color: #f8f9fa;
+}
+
+/* contact links: light blue pill with a blue border */
+.page .details dd a {
+  display: inline-block;
+  padding: 6px 14px;
+  background-color: #f2f7ff;
+  color: #0b4ea2;
+  font-weight: bold;
+  border: 2px solid #0b4ea2;
+  border-radius: 20px;
+}
+
+/* hover effect: blue background with yellow text */
+.page .details dd a:hover {
+  background-color: #0b4ea2;
+  color: #ffd500;
+}
+
 /* ---------- TOYS.HTML ---------- */
 /* page title area on toys.html */
 #category-header {
@@ -737,180 +791,8 @@ video {
 
 /* short description under the category name */
 .category-card p {
-  padding: 0 12px;
-  margin: 6px 0 12px 0;
-  color: #5b6b82;
-}
+  padding:
 
-/* 'View Category' button: blue pill */
-.category-card .category-btn {
-  display: inline-block;
-  padding: 8px 20px;
-  margin-bottom: 15px;
-  background-color: #0b4ea2;
-  color: white;
-  font-weight: bold;
-  border-radius: 20px;
-}
+ 
 
-/* red on hover */
-.category-card .category-btn:hover {
-  background-color: #e2231a;
-}
-
-/* ---------- ABOUT.HTML ---------- */
-/* intro box at the top of the About page */
-#group-intro {
-  background-color: white;
-  padding: 25px;
-  border-radius: 14px;
-  border-left: 6px solid #e2231a;
-}
-
-#group-intro p {
-  margin-top: 8px;
-}
-
-/* 'About This Website' box at the bottom */
-#about-website {
-  background-color: white;
-  padding: 25px;
-  border-radius: 14px;
-  border-top: 6px solid #ffd500;
-}
-
-/* member name: smaller so long names fit */
-.member-card h3 {
-  font-size: 16px;
-  margin-bottom: 8px;
-}
-
-/* smaller text; word-wrap stops long emails going outside the card */
-.member-card p {
-  font-size: 14px;
-  margin-bottom: 4px;
-  word-wrap: break-word;
-}
-
-/* =========================================================
-   RESPONSIVE (media queries)
-   ========================================================= */
-
-/* tablet: sidebar moves above the content */
-@media (max-width: 900px) {
-  /* one column: the sidebar moves above the main content */
-  body {
-    grid-template-columns: 1fr;
-  }
-
-  /* header/footer back to a single column */
-  #site-header, #site-footer {
-    grid-column: 1;
-  }
-
-  #sidebar {
-    border-right: none;
-    border-bottom: 4px solid #e2231a;
-  }
-
-  /* sidebar links become a wrapped row of buttons so they don't squash the content */
-  #category-menu {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  #category-menu li {
-    margin-bottom: 0;
-  }
-
-  #category-menu a {
-    border: 2px solid #0b4ea2;
-    border-radius: 20px;
-    padding: 6px 14px;
-  }
-
-  /* fewer cards per row on tablet */
-  .card-grid { grid-template-columns: repeat(3, 1fr); }
-  .grid { grid-template-columns: repeat(2, 1fr); }
-  .category-row { grid-template-columns: repeat(2, 1fr); }
-
-  /* member cards wrap onto a second row instead of squeezing */
-  .members-grid {
-    flex-wrap: wrap;
-  }
-
-  .member-card {
-    flex: 1 1 30%;
-  }
-}
-
-/* mobile */
-@media (max-width: 600px) {
-  /* header: logo above the nav on phones */
-  #site-header {
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  /* nav links wrap and centre if they don't fit */
-  #main-nav ul {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  /* smaller padding and text on phones */
-  #main-content { padding: 15px; }
-  h1 { font-size: 26px; }
-  #hero-banner img { height: 200px; }
-
-  /* every grid becomes 1 column on phones */
-  .card-grid,
-  .grid,
-  .category-row,
-  .about .cols,
-  .toy-gallery {
-    grid-template-columns: 1fr;
-  }
-
-  /* these stack on mobile */
-  /* members and detail cards stack vertically on phones */
-  .members-grid,
-  .toy-details-row {
-    flex-direction: column;
-  }
-}
-
-/*BACKGROUND MUSIC BUTTON*/
-.music-control {
-  display: inline-block;
-}
-
-.hero-music {
-  margin: 20px 25px 25px 0;
-  vertical-align: middle;
-}
-
-.footer-music {
-  margin-top: 10px;
-}
-
-.music-toggle-btn {
-  padding: 10px 22px;
-  font-size: 14px;
-  font-weight: bold;
-  color: #083a7a;
-  background-color: #ffd500;
-  border: 2px solid #ffd500;
-  border-radius: 25px;
-  cursor: pointer;
-}
-
-.music-toggle-btn:hover {
-  background-color: #e6bf00;
-}
-
-.footer-music .music-toggle-btn {
-  padding: 7px 18px;
-  border-radius: 20px;
-}
+    
