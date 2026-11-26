@@ -34,7 +34,9 @@ if (mysqli_query($conn, $sql)) {
         window.location.href = 'feedback.html';
         </script>";
 } else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    echo "<script>alert('Error: " . $sql . "<br>" . mysqli_error($conn) . "');
+    window.location.href = 'feedback.html';
+    </script>";
 }
 
 mysqli_close($conn);
