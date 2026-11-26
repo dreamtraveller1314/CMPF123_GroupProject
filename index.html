@@ -40,7 +40,7 @@
 
   <main id="main-content">
     <section id="hero-banner">
-      <img src="images/background/hero-banner.jpg" alt="Toysverse collection banner" width="900" height="350">
+      <img src="images/background/toysverse-banner.png" alt="Toysverse collection banner" width="900" height="350">
       <h1>Toys that make playtime a party.</h1>
       <p>Board games for game night, cars that go fast, and plenty more for kids of every age.</p>
       <a href="toys.html" id="explore-btn">Explore Toys</a>
@@ -155,10 +155,30 @@
   </main>
 
   <footer id="site-footer">
-    <p>Group: Toysverse</p>
-  </footer>
+  <div class="footer-left">
+    <p>Toysverse</p>
 
-  <script src="script.js"></script>
+  <div class="footer-contact">
+    <p class="footer-contact-title">Contact us</p>
+    <p>Have a question or feedback? Reach out by email or Instagram.</p>
+    <dl>
+      <dt>Email</dt>
+      <dd><a href="mailto:toysverse4u@gmail.com">toysverse4u@gmail.com</a></dd>
+      <dt>Instagram</dt>
+      <dd><a href="https://instagram.com/toysverse4u" target="_blank" rel="noopener">@toysverse4u</a></dd>
+    </dl>
+  </div>
+
+  <nav id="footer-nav" aria-label="Footer navigation">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="toys.html">Toys</a></li>
+      <li><a href="feedback.html">Feedback</a></li>
+      <li><a href="about.html">About Us</a></li>
+    </ul>
+  </nav>
+</footer>
+<script src="script.js"></script>
   <script>
   const homeSpeakerBtn = document.getElementById("home-speaker-btn");
 
@@ -174,7 +194,6 @@
 
   window.parent.postMessage({ type: "GET_MUSIC_STATE" }, "*");
 </script>
-
 </body>
 
 </html>
