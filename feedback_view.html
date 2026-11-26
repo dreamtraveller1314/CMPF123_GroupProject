@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Toysverse - Feedback</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header id="site-header">
+    <div id="brand">
+      <a href="index.html">
+        <img src="images/background/toysverse-logo.png" alt="Toysverse logo" width="40" height="40">
+        <span>Toysverse</span>
+      </a>
+    </div>
+    <nav id="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="toys.html">Toys</a></li>
+        <li><a href="feedback.html" class="active">Feedback</a></li>
+        <li><a href="about.html">About Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <aside id="sidebar">
+    <h2>Categories</h2>
+    <ul id="category-menu">
+      <li><a href="toys-action-figures.html">Action Figures</a></li>
+      <li><a href="toys-puzzles.html">Puzzles</a></li>
+      <li><a href="toys-cars.html">Cars</a></li>
+      <li><a href="toys-building-blocks.html">Building Blocks</a></li>
+      <li><a href="toys-kids-toys.html">Kids Toys</a></li>
+    </ul>
+  </aside>
+
+  <main id="main-content">
+    <h1>Feedback</h1>
+    <p>Tell us what you think</p>
+
+    <div id="feedback-card">
+      <form id="feedback-form" action="submit_feedback.php" method="post">
+        <div class="form-group">
+          <label for="user-name">Name</label>
+          <input type="text" id="user-name" name="userName" minlength="2" maxlength="256" required>
+          <span class="validation-status" id="name-status"></span>
+        </div>
+
+        <fieldset class="form-group">
+          <legend>Gender</legend>
+          <label><input type="radio" name="userGender" value="Male" required> Male</label>
+          <label><input type="radio" name="userGender" value="Female"> Female</label>
+          <label><input type="radio" name="userGender" value="Other"> Other</label>
+          <span class="validation-status" id="gender-status"></span>
+        </fieldset>
+
+        <div class="form-group">
+          <label for="user-email">Email</label>
+          <input type="email" id="user-email" name="userEmail" required>
+          <span class="validation-status" id="email-status"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="feedback-type">Type of Feedback</label>
+          <select id="feedback-type" name="userFeedbackType" required>
+            <option value="">-- Select Type --</option>
+            <option value="Suggestion">Suggestion</option>
+            <option value="Complaint">Complaint</option>
+            <option value="Enquiry">Enquiry</option>
+          </select>
+          <span class="validation-status" id="type-status"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="feedback-message">Feedback</label>
+          <textarea id="feedback-message" name="userFeedback" rows="6" cols="40" required></textarea>
+          <span class="validation-status" id="feedback-status"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="feedback-datetime">Date and Time</label>
+          <input type="datetime-local" id="feedback-datetime" name="userFeedbackDateTime" required>
+          <span class="validation-status" id="datetime-status"></span>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" id="submit-btn">Submit</button>
+          <button type="reset" id="reset-btn">Reset</button>
+          <button type="button" id="back-btn" onclick="window.location.href='index.html'">View Feedback</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer id="site-footer">
+    <p>Group: Toysverse</p>
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
