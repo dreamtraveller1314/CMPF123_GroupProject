@@ -5,59 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Toysverse - Contact Us</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    /* Change these colors and fonts to match the rest of your site */
-    :root {
-      --bg: #f5f7fa;
-      --surface: #ffffff;
-      --text: #1b2430;
-      --muted: #5b6675;
-      --line: #d9dfe7;
-      --brand: #1f5eff;
-      --font: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #12161c;
-        --surface: #1b212a;
-        --text: #eef1f5;
-        --muted: #9aa5b4;
-        --line: #2f3844;
-        --brand: #6d9bff;
-      }
-    }
-
-    *, *::before, *::after { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: var(--font);
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    .page {
-      max-width: 640px;
-      margin: 0 auto;
-      padding: 56px 20px 72px;
-    }
-    h1 { font-size: clamp(2rem, 5vw, 2.75rem); line-height: 1.15; margin: 0 0 12px; }
-    .intro { color: var(--muted); margin: 0 0 32px; }
-
-    .details {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 28px;
-    }
-    .details h2 { font-size: 1.15rem; margin: 0 0 8px; }
-    .details dl { margin: 0; }
-    .details dt { font-weight: 600; margin-top: 18px; }
-    .details dd { margin: 2px 0 0; color: var(--muted); }
-    .details a { color: var(--brand); text-decoration: none; }
-    .details a:hover { text-decoration: underline; }
-    .details a:focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; }
-  </style>
 </head>
 <body>
 
@@ -72,9 +19,9 @@
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="toys.html">Toys</a></li>
-        <li><a href="feedback.html">Feedback</a></li>
+        <li><a href="feedback.html" class="active">Feedback</a></li>
         <li><a href="about.html">About Us</a></li>
-               <li><a href="contact-us.html">Contact Us</a></li>
+        <li><a href="contact-us.html">Contact Us</a></li>
       </ul>
     </nav>
   </header>
@@ -90,20 +37,43 @@
     </ul>
   </aside>
 
-  <main class="page">
-    <h1>Contact us</h1>
-    <p class="intro">Have a question or feedback? Reach out by email or Instagram.</p>
+  <main id="main-content">
+    <h1>Contact Us</h1>
+    <p>Reach out to us by email or Instagram</p>
 
-    <section class="details" aria-labelledby="details-title">
-      <h2 id="details-title">Get in touch</h2>
-      <dl>
-        <dt>Email</dt>
-        <dd><a href="mailto:toysverse4u@gmail.com">toysverse4u@gmail.com</a></dd>
-        <dt>Instagram</dt>
-        <dd><a href="https://instagram.com/toysverse4u" target="_blank" rel="noopener">@toysverse4u</a></dd>
-      </dl>
-    </section>
+    <div id="feedback-card">
+      <div class="form-group">
+        <p><strong>Email</strong></p>
+        <p><a href="mailto:toysverse4u@gmail.com">toysverse4u@gmail.com</a></p>
+      </div>
+
+      <div class="form-group">
+        <p><strong>Instagram</strong></p>
+        <p><a href="https://instagram.com/toysverse4u" target="_blank" rel="noopener">@toysverse4u</a></p>
+      </div>
+    </div>
   </main>
+
+  <footer id="site-footer">
+    <p>Group: Toysverse</p>
+    <div class="music-control footer-music">
+      <button type="button" class="music-toggle-btn">Play Music</button>
+      <audio id="bg-music" loop preload="none">
+        <source src="Backgroundmusic.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+    <nav id="footer-nav" aria-label="Footer navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="toys.html">Toys</a></li>
+        <li><a href="feedback.html">Feedback</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact-us.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </footer>
+
+  <script src="script.js"></script>
+
 </body>
 </html>
-
