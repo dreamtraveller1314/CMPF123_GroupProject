@@ -455,6 +455,21 @@ video {
   height: 250px;
   max-width: 100%;
   object-fit: cover;
+  margin: 0 10px 10px 0;
+}
+
+/* spacing for the text inside a detail card (the * reset removed it) */
+.toy-detail-card h2 {
+  margin-top: 12px;
+}
+
+.toy-detail-card h3 {
+  margin-top: 15px;
+  margin-bottom: 8px;
+}
+
+.toy-detail-card p {
+  margin-bottom: 8px;
 }
 
 /* title area on the category detail pages */
