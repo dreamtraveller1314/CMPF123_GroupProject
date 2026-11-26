@@ -69,7 +69,7 @@ categoryFilterButtons.forEach(function(button) {
 
 });
 
-// DYNAMIC TOY CARDS
+// DYNAMIC TOY CARDS (ONLY RUNS WHEN A REAL <template> IS PRESENT)
 
 var toyData = [
 
@@ -98,27 +98,29 @@ var toyData = [
 var container = document.getElementById("toy-details-container");
 var template = document.getElementById("toy-card-template");
 
-if (container && template) {
+if (container && template && template.tagName === "TEMPLATE" && template.content) {
 
     for (var i = 0; i < toyData.length; i++) {
 
         var toyCard = template.content.cloneNode(true);
 
-        toyCard.querySelector(".toy-main-img").src = toyData[i].image;
+        var mainImg = toyCard.querySelector(".toy-main-img");
+        var thumb1 = toyCard.querySelector(".toy-thumb-1");
+        var thumb2 = toyCard.querySelector(".toy-thumb-2");
+        var nameEl = toyCard.querySelector(".toy-name");
+        var brandEl = toyCard.querySelector(".toy-brand");
+        var descEl = toyCard.querySelector(".toy-description");
 
-        toyCard.querySelector(".toy-thumb-1").src = toyData[i].thumb1;
-
-        toyCard.querySelector(".toy-thumb-2").src = toyData[i].thumb2;
-
-        toyCard.querySelector(".toy-name").textContent = toyData[i].name;
-
-        toyCard.querySelector(".toy-brand").textContent = toyData[i].brand;
-
-        toyCard.querySelector(".toy-description").textContent = toyData[i].description;
+        if (mainImg) mainImg.src = toyData[i].image;
+        if (thumb1) thumb1.src = toyData[i].thumb1;
+        if (thumb2) thumb2.src = toyData[i].thumb2;
+        if (nameEl) nameEl.textContent = toyData[i].name;
+        if (brandEl) brandEl.textContent = toyData[i].brand;
+        if (descEl) descEl.textContent = toyData[i].description;
 
         var viewerFrame = toyCard.querySelector(".toy-3d-frame");
 
-        if (toyData[i].model != "") {
+        if (viewerFrame && toyData[i].model != "") {
 
             var viewer = document.createElement("model-viewer");
 
