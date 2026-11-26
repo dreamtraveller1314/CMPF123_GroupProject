@@ -18,10 +18,10 @@ $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     //output data of each row
     while($row = mysqli_fetch_assoc($result)) {
-        echo "ID: " . $row["userFeedbackID"]. " - Name: " . $row["userName"]. " - Gender: " . $row["userGender"]. " - Email: " . $row["userEmail"]. " - Feedback Type: " . $row["userFeedbackType"]. " - Feedback: " . $row["userFeedback"]. " - Date and Time: " . $row["userFeedbackDateTime"]. "<br>";
+        echo "Name: " . $row["userName"]. " - Gender: " . $row["userGender"]. " - Email: " . $row["userEmail"]. " - Feedback Type: " . $row["userFeedbackType"]. " - Feedback: " . $row["userFeedback"]. " - Date and Time: " . $row["userFeedbackDateTime"]. "<br>";
     }
 } else {
-    echo "0 results";
+    echo "<script>alert('No feedback found.');</script>";
 }
 
 $conn = mysqli_close($conn);
