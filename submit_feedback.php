@@ -1,34 +1,27 @@
-<!DOCTYPE html>
-<html>
-    <?php 
-        $userName = $_POST["user-name"];
-        $userEmail = $_POST["user-email"];
-        $feedbackType = $_POST["feedback-type"];
-        $feedbackMessage = $_POST["feedback-message"];
-        $feedbackDateTime = $_POST["feedback-datetime"];
+<?php 
+require "config.php";
 
-        //change date format to DD-MM-YYYY
-        $feedbackDate = new DateTime();
+$conn = mysqli_connect($host, $username, $password, $database);
 
-        //store data into database
-        require "config.php";
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
 
-        //create connection with database
-        $link = mysqli_connect($host, $username, $password, $dbname);
+$name = $_POST["userName"];
+$gender = $_POST["userGender"];
+$email = $_POST["userEmail"];
+$feedbackType = $_POST["userFeedbackType"];
+$feedback = $_POST["userFeedback"];
 
-        //to check if connection is NOT OK
-        if (!$link) {
-            die("Connection problem".mysqli_connect_error($link));//display MySQLI error
-        } else {
-            //connection OK - insert record into a database table
-            $queryInsert = "INSERT INTO feedback_form (user_name, user_email, feedback_type, feedback_message, feedback_datetime) VALUES ('$userName', '$userEmail', '$feedbackType', '$feedbackMessage', '$feedbackDateTime')";
-            $resultInsert = mysqli_query($link, $queryInsert);
-            if (!$resultInsert) { //to check if query result is NOT OK 
-                die("Invalid Query - insert feedback".mysqli_error($link));
-            } else {
-                //query result is OK
-                echo "<script>alert('Your feedback has been successfully submitted.');</script>";
-            }
-        }
-    ?>
-</html>
+date_default_timezone_set('Asia/Kuala_Lumpur');
+$dateTime = date('Y-m-d H:i:s'); 
+
+$sql = "INSERT INTO feedback_form (userEmail, userName, userGender, userFeedbackType, userFeedback, userFeedbackDateTime)
+VALUES ('$email', '$name', '$gender', '$feedbackType', '$feedback', '$dateTime')";
+
+if (mysqli_query($conn, $sql)) {
+    echo "Feedback submitted successfully!";
+} else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
+mysqli_close($conn);
