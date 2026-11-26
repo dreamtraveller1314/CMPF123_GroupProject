@@ -16,7 +16,7 @@ $feedback = $_POST["userFeedback"];
 date_default_timezone_set('Asia/Kuala_Lumpur');
 $dateTime = date('Y-m-d H:i:s'); 
 
-$sql = "INSERT INTO feedback_form (userEmail, userName, userGender, userFeedbackType, userFeedback, userFeedbackDateTime)
+$sql = "INSERT INTO feedback_data (userEmail, userName, userGender, userFeedbackType, userFeedback, userFeedbackDateTime)
 VALUES ('$email', '$name', '$gender', '$feedbackType', '$feedback', '$dateTime')";
 
 if (mysqli_query($conn, $sql)) {
