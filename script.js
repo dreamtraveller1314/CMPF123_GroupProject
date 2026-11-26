@@ -69,7 +69,7 @@ categoryFilterButtons.forEach(function(button) {
 
 });
 
-// DYNAMIC TOY CARDS
+// DYNAMIC TOY CARDS (ONLY RUNS WHEN A REAL <template> IS PRESENT)
 
 var toyData = [
 
@@ -98,27 +98,29 @@ var toyData = [
 var container = document.getElementById("toy-details-container");
 var template = document.getElementById("toy-card-template");
 
-if (container && template) {
+if (container && template && template.tagName === "TEMPLATE" && template.content) {
 
     for (var i = 0; i < toyData.length; i++) {
 
         var toyCard = template.content.cloneNode(true);
 
-        toyCard.querySelector(".toy-main-img").src = toyData[i].image;
+        var mainImg = toyCard.querySelector(".toy-main-img");
+        var thumb1 = toyCard.querySelector(".toy-thumb-1");
+        var thumb2 = toyCard.querySelector(".toy-thumb-2");
+        var nameEl = toyCard.querySelector(".toy-name");
+        var brandEl = toyCard.querySelector(".toy-brand");
+        var descEl = toyCard.querySelector(".toy-description");
 
-        toyCard.querySelector(".toy-thumb-1").src = toyData[i].thumb1;
-
-        toyCard.querySelector(".toy-thumb-2").src = toyData[i].thumb2;
-
-        toyCard.querySelector(".toy-name").textContent = toyData[i].name;
-
-        toyCard.querySelector(".toy-brand").textContent = toyData[i].brand;
-
-        toyCard.querySelector(".toy-description").textContent = toyData[i].description;
+        if (mainImg) mainImg.src = toyData[i].image;
+        if (thumb1) thumb1.src = toyData[i].thumb1;
+        if (thumb2) thumb2.src = toyData[i].thumb2;
+        if (nameEl) nameEl.textContent = toyData[i].name;
+        if (brandEl) brandEl.textContent = toyData[i].brand;
+        if (descEl) descEl.textContent = toyData[i].description;
 
         var viewerFrame = toyCard.querySelector(".toy-3d-frame");
 
-        if (toyData[i].model != "") {
+        if (viewerFrame && toyData[i].model != "") {
 
             var viewer = document.createElement("model-viewer");
 
@@ -133,78 +135,6 @@ if (container && template) {
         container.appendChild(toyCard);
 
     }
-
-}
-
-// FEEDBACK FORM VALIDATION
-
-// FORMAT LOCAL DATETIME FOR datetime-local INPUT (YYYY-MM-DDTHH:MM)
-
-function formatLocalDateTime(dateObj) {
-
-    var year = dateObj.getFullYear();
-    var month = String(dateObj.getMonth() + 1).padStart(2, "0");
-    var day = String(dateObj.getDate()).padStart(2, "0");
-    var hours = String(dateObj.getHours()).padStart(2, "0");
-    var minutes = String(dateObj.getMinutes()).padStart(2, "0");
-
-    return year + "-" + month + "-" + day + "T" + hours + ":" + minutes;
-
-}
-
-// AUTO DATE AND TIME + SET MAX TO NOW (NO FUTURE DATES)
-
-var dateTime = document.getElementById("feedback-datetime");
-
-if (dateTime) {
-
-    var currentDate = new Date();
-    var formattedNow = formatLocalDateTime(currentDate);
-
-    dateTime.setAttribute("max", formattedNow);
-
-    if (dateTime.value == "") {
-        dateTime.value = formattedNow;
-    }
-
-    document.getElementById("datetime-status").innerHTML = "Date and time recorded (today or earlier only).";
-
-}
-
-// DATE AND TIME VALIDATION
-
-function checkDateTime() {
-
-    var dtInput = document.getElementById("feedback-datetime");
-    var statusEl = document.getElementById("datetime-status");
-
-    if (!dtInput) {
-        return true;
-    }
-
-    var now = new Date();
-    var currentMax = formatLocalDateTime(now);
-    dtInput.setAttribute("max", currentMax);
-
-    if (dtInput.value == "") {
-        statusEl.innerHTML = "Please select a date and time.";
-        return false;
-    }
-
-    var selectedDate = new Date(dtInput.value);
-
-    if (isNaN(selectedDate.getTime())) {
-        statusEl.innerHTML = "Invalid date and time.";
-        return false;
-    }
-
-    if (selectedDate > now) {
-        statusEl.innerHTML = "Future date or time is not allowed. Choose today or an earlier day.";
-        return false;
-    }
-
-    statusEl.innerHTML = "Valid date and time.";
-    return true;
 
 }
 
@@ -349,9 +279,7 @@ if (feedbackForm) {
 
         var validFeedback = checkFeedback();
 
-        var validDateTime = checkDateTime();
-
-        if (validName && validGender && validEmail && validType && validFeedback && validDateTime) {
+        if (validName && validGender && validEmail && validType && validFeedback) {
 
             window.alert("Thank you for your feedback!");
 
@@ -366,5 +294,50 @@ if (feedbackForm) {
         }
 
     };
+
+}
+
+// BACKGROUND MUSIC CONTROL ACROSS PAGES
+
+var bgMusic = document.getElementById("bg-music");
+var musicButtons = document.querySelectorAll(".music-toggle-btn");
+
+if (bgMusic && musicButtons.length > 0) {
+
+    bgMusic.volume = 0.25;
+    var musicPref = localStorage.getItem("toysverseMusic");
+
+    function updateMusicButtons() {
+        var label = !bgMusic.paused ? "Pause Music" : "Play Music";
+        musicButtons.forEach(function(btn) {
+            btn.textContent = label;
+        });
+    }
+
+    musicButtons.forEach(function(btn) {
+        btn.onclick = function() {
+            if (bgMusic.paused) {
+                bgMusic.play().then(function() {
+                    localStorage.setItem("toysverseMusic", "on");
+                    updateMusicButtons();
+                }).catch(function() {});
+            } else {
+                bgMusic.pause();
+                localStorage.setItem("toysverseMusic", "off");
+                updateMusicButtons();
+            }
+        };
+    });
+
+    if (musicPref === "on") {
+        document.addEventListener("pointerdown", function resumeOnce() {
+            if (localStorage.getItem("toysverseMusic") === "on" && bgMusic.paused) {
+                bgMusic.play().then(updateMusicButtons).catch(function() {});
+            }
+            document.removeEventListener("pointerdown", resumeOnce);
+        });
+    }
+
+    updateMusicButtons();
 
 }
