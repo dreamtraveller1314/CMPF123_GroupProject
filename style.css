@@ -4,12 +4,17 @@
    ========================================================= */
 
 /* ---------- SITE-WIDE (universal + element selectors) ---------- */
+/* Universal selector (*): removes the browser's default margin and padding
+   so every page starts equal. box-sizing makes width include padding + border,
+   so boxes don't grow bigger than expected. */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* body: default font, text colour and page background for the whole site.
+   display: grid splits the page into 2 columns: 240px sidebar + the rest. */
 body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
@@ -24,20 +29,25 @@ h1, h2, h3 {
   color: #0b4ea2;
 }
 
+/* heading sizes */
 h1 { font-size: 34px; }
 h2 { font-size: 26px; margin-bottom: 10px; }
 h3 { font-size: 18px; }
 
+/* links: blue with no underline */
 a {
   color: #0b4ea2;
   text-decoration: none;
 }
 
+/* removes the bullet points (nav menu and sidebar are lists) */
 ul {
   list-style: none;
 }
 
 /* ---------- STANDARDISED MEDIA ---------- */
+/* max-width: 100% = images/videos never go wider than their box.
+   border-radius gives rounded corners. Same rule for every page = standardised media. */
 img, video, iframe {
   max-width: 100%;
   border-radius: 10px;
@@ -47,11 +57,13 @@ img, video, iframe {
 .category-card img,
 .card img,
 .member-card img,
+/* all gallery pictures the same height with a white border */
 .toy-gallery img {
   width: 100%;
   object-fit: cover;
 }
 
+/* video fills the width; height: auto keeps the correct shape */
 video {
   width: 100%;
   height: auto;
@@ -59,6 +71,9 @@ video {
 }
 
 /* ---------- HEADER & NAVIGATION (id + class selectors) ---------- */
+/* Header: position: sticky + top: 0 keeps it visible while scrolling.
+   grid-column 1 / 3 stretches it across both columns. flex puts the logo on
+   the left and the nav on the right. z-index keeps it above the content. */
 #site-header {
   grid-column: 1 / 3;
   position: sticky;            /* stays visible while scrolling */
@@ -72,6 +87,7 @@ video {
   border-bottom: 5px solid #ffd500;
 }
 
+/* logo + site name side by side */
 #brand a {
   display: flex;
   align-items: center;
@@ -81,16 +97,19 @@ video {
   font-weight: bold;
 }
 
+/* white circle behind the logo */
 #brand img {
   background-color: white;
   border-radius: 50%;
 }
 
+/* nav links in one row (flex) with a small gap */
 #main-nav ul {
   display: flex;
   gap: 8px;
 }
 
+/* each nav link looks like a rounded button */
 #main-nav a {
   display: block;
   padding: 8px 18px;
@@ -99,6 +118,7 @@ video {
   border-radius: 20px;
 }
 
+/* darker blue when the mouse is over a link */
 #main-nav a:hover {
   background-color: #083a7a;
 }
@@ -110,12 +130,14 @@ video {
 }
 
 /* ---------- SIDEBAR ---------- */
+/* Sidebar: white panel with a red line on the right */
 #sidebar {
   background-color: white;
   padding: 20px 15px;
   border-right: 4px solid #e2231a;
 }
 
+/* 'Categories' title: red with a yellow underline */
 #sidebar h2 {
   color: #e2231a;
   font-size: 22px;
@@ -124,10 +146,12 @@ video {
   margin-bottom: 12px;
 }
 
+/* space between sidebar links */
 #category-menu li {
   margin-bottom: 6px;
 }
 
+/* each link fills the row; transparent-looking left border becomes red on hover */
 #category-menu a {
   display: block;
   padding: 10px 12px;
@@ -135,6 +159,7 @@ video {
   border-left: 5px solid white;
 }
 
+/* hover effect: light background + red left border + red text */
 #category-menu a:hover {
   background-color: #f2f7ff;
   border-left: 5px solid #e2231a;
@@ -142,14 +167,17 @@ video {
 }
 
 /* ---------- MAIN CONTENT & FOOTER ---------- */
+/* main area: padding so content doesn't touch the edges */
 #main-content {
   padding: 30px;
 }
 
+/* space between sections */
 #main-content section {
   margin-bottom: 35px;
 }
 
+/* Footer: dark blue bar across the full width, centred text, red top line */
 #site-footer {
   grid-column: 1 / 3;
   background-color: #083a7a;
@@ -160,6 +188,7 @@ video {
 }
 
 /* ---------- INDEX: HERO ---------- */
+/* Hero banner: blue box; overflow: hidden keeps the image inside rounded corners */
 #hero-banner {
   background-color: #0b4ea2;
   color: white;
@@ -167,6 +196,7 @@ video {
   overflow: hidden;
 }
 
+/* banner image: full width, fixed 350px height, cropped to fit (object-fit: cover) */
 #hero-banner img {
   width: 100%;
   height: 350px;
@@ -174,16 +204,19 @@ video {
   border-radius: 0;
 }
 
+/* yellow heading on the blue background */
 #hero-banner h1 {
   color: #ffd500;
   padding: 20px 25px 0 25px;
 }
 
+/* banner paragraph */
 #hero-banner p {
   padding: 8px 25px 0 25px;
   font-size: 18px;
 }
 
+/* 'Explore Toys' button: red pill with a white border */
 #explore-btn {
   display: inline-block;
   margin: 20px 25px 25px 25px;
@@ -195,11 +228,13 @@ video {
   border-radius: 25px;
 }
 
+/* darker red on hover */
 #explore-btn:hover {
   background-color: #b81a12;
 }
 
 /* ---------- INDEX: PROMO VIDEO ---------- */
+/* Promo video section: white box with a yellow top line */
 #promo-video {
   background-color: white;
   padding: 25px;
@@ -207,21 +242,25 @@ video {
   border-top: 6px solid #ffd500;
 }
 
+/* space under the description */
 #promo-video p {
   margin-bottom: 15px;
 }
 
+/* blue frame around the video */
 #promo-video video {
   border: 4px solid #0b4ea2;
 }
 
 /* ---------- INDEX: .card-grid and .category-card ---------- */
+/* .card-grid: 5 equal columns, one for each category (gap = space between) */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 18px;
 }
 
+/* .category-card: white card, red top border, rounded corners, centred text */
 .category-card {
   background-color: white;
   border-top: 5px solid #e2231a;
@@ -230,32 +269,38 @@ video {
   text-align: center;
 }
 
+/* whole card is clickable (link fills the card) */
 .category-card a {
   display: block;
   padding-bottom: 12px;
 }
 
+/* category pictures: same 150px height, cropped neatly */
 .category-card img {
   height: 150px;
   border-radius: 0;
   margin-bottom: 10px;
 }
 
+/* card turns light yellow on hover */
 .category-card:hover {
   background-color: #fff8cc;
 }
 
 /* ---------- INDEX: #filters, .grid and .card ---------- */
+/* text under 'Featured Toys' */
 #featured-toys p {
   margin-bottom: 15px;
 }
 
+/* #filters: filter buttons in one row */
 #filters {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
 }
 
+/* normal filter button: blue outline, white inside, pill shape */
 #filters button {
   padding: 8px 20px;
   font-size: 16px;
@@ -267,23 +312,27 @@ video {
   cursor: pointer;
 }
 
+/* fills blue on hover */
 #filters button:hover {
   background-color: #0b4ea2;
   color: white;
 }
 
+/* selected filter is red */
 #filters button.active {
   background-color: #e2231a;
   border-color: #e2231a;
   color: white;
 }
 
+/* .grid: 4 toy cards per row */
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
 
+/* .card: one toy (white box, padding, rounded, centred) */
 .card {
   background-color: white;
   padding: 12px;
@@ -291,16 +340,19 @@ video {
   text-align: center;
 }
 
+/* all toy pictures the same height */
 .card img {
   height: 160px;
   margin-bottom: 10px;
 }
 
+/* age text: grey */
 .card p {
   color: #5b6b82;
   margin-bottom: 10px;
 }
 
+/* 'View Details' button: blue pill */
 .card a {
   display: inline-block;
   padding: 7px 18px;
@@ -310,11 +362,13 @@ video {
   border-radius: 20px;
 }
 
+/* turns red on hover */
 .card a:hover {
   background-color: #e2231a;
 }
 
 /* ---------- INDEX: ABOUT SECTION ---------- */
+/* About section: white box with red left border */
 .about {
   background-color: white;
   padding: 25px;
@@ -322,6 +376,7 @@ video {
   border-left: 6px solid #e2231a;
 }
 
+/* 3 equal columns for the 3 small boxes */
 .about .cols {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -329,6 +384,7 @@ video {
   margin-top: 15px;
 }
 
+/* each small box: light blue background with a yellow top line */
 .about .cols div {
   background-color: #f2f7ff;
   padding: 15px;
@@ -337,6 +393,7 @@ video {
 }
 
 /* ---------- TOYS.HTML: .category-row (3 per row) ---------- */
+/* .category-row: exactly 3 cards per row on desktop */
 .category-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -345,23 +402,36 @@ video {
 }
 
 /* ---------- CATEGORY DETAIL PAGES ---------- */
+/* .toy-details-row: toy cards stacked vertically, one under the other (flex-direction: column) */
 .toy-details-row {
   display: flex;
+  flex-direction: column;
   gap: 25px;
 }
 
+/* detail card: wide white box, full width of the page; flex: none = height fits the content */
 .toy-detail-card {
-  flex: 1;
+  flex: none;
+  width: 100%;
   background-color: white;
   padding: 20px;
   border-radius: 14px;
   border-top: 5px solid #0b4ea2;
 }
 
+/* red title inside the detail card */
 .toy-detail-card h2 {
   color: #e2231a;
+  font-size: 20px;
 }
 
+/* brand name inside the detail card */
+.toy-brand {
+  color: #e2231a;
+  font-weight: bold;
+}
+
+/* .toy-gallery: pictures in 2 columns */
 .toy-gallery {
   flex: 1;
   display: grid;
@@ -374,6 +444,49 @@ video {
   border: 3px solid white;
 }
 
+/* gallery inside a detail card: the box stretches, the picture stays a fixed square */
+.toy-detail-card .toy-gallery {
+  display: block;
+  margin-top: 12px;
+}
+
+.toy-detail-card .toy-gallery img {
+  width: 250px;
+  height: 250px;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+/* title area on the category detail pages */
+#details-header {
+  margin-bottom: 20px;
+}
+
+#details-header p {
+  color: #5b6b82;
+}
+
+/* Back / Next buttons at the bottom of the detail pages */
+#toy-pagination {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+#back-to-category, #next-toy {
+  display: inline-block;
+  padding: 10px 28px;
+  background-color: #0b4ea2;
+  color: white;
+  font-weight: bold;
+  border-radius: 25px;
+}
+
+#back-to-category:hover, #next-toy:hover {
+  background-color: #e2231a;
+}
+
+/* .toy-3d-frame: fixed-size frame for the 3D viewer, yellow border */
 .toy-3d-frame {
   width: 100%;
   height: 400px;
@@ -382,11 +495,13 @@ video {
 }
 
 /* ---------- ABOUT.HTML: MEMBERS ---------- */
+/* .members-grid: all member cards in one row on desktop (flex) */
 .members-grid {
   display: flex;
   gap: 20px;
 }
 
+/* .member-card: equal width white card with a red bottom line */
 .member-card {
   flex: 1;
   background-color: white;
@@ -396,6 +511,7 @@ video {
   border-bottom: 5px solid #e2231a;
 }
 
+/* member photo: round (border-radius 50%), yellow border */
 .member-card img {
   width: 140px;
   height: 140px;
@@ -404,11 +520,13 @@ video {
   margin-bottom: 10px;
 }
 
+/* grey text for ID / contact */
 .member-card p {
   color: #5b6b82;
 }
 
 /* ---------- FEEDBACK.HTML ---------- */
+/* #feedback-card: form box. max-width + margin auto centres it on the page */
 #feedback-card {
   max-width: 640px;
   margin: 0 auto;
@@ -418,6 +536,7 @@ video {
   border-top: 6px solid #e2231a;
 }
 
+/* labels sit above their field, blue and bold */
 #feedback-card label {
   display: block;
   margin-top: 15px;
@@ -426,9 +545,11 @@ video {
   color: #0b4ea2;
 }
 
+/* form fields: full width, padding, light background, rounded border */
 #feedback-card input[type="text"],
 #feedback-card input[type="email"],
 #feedback-card select,
+/* message box is taller */
 #feedback-card textarea {
   width: 100%;
   padding: 10px;
@@ -443,6 +564,7 @@ video {
   height: 130px;
 }
 
+/* shared style for both buttons (pill shape, no default border) */
 #submit-btn, #reset-btn {
   margin-top: 20px;
   margin-right: 10px;
@@ -454,24 +576,29 @@ video {
   cursor: pointer;
 }
 
+/* #submit-btn: red */
 #submit-btn {
   background-color: #e2231a;
   color: white;
 }
 
+/* darker red on hover */
 #submit-btn:hover {
   background-color: #b81a12;
 }
 
+/* #reset-btn: yellow */
 #reset-btn {
   background-color: #ffd500;
   color: #083a7a;
 }
 
+/* darker yellow on hover */
 #reset-btn:hover {
   background-color: #e6bf00;
 }
 
+/* .validation-status: message under a field (JavaScript fills it in) */
 .validation-status {
   display: block;
   margin-top: 6px;
@@ -482,21 +609,25 @@ video {
 }
 
 /* hide the message box while it is empty */
+/* hide the message box when there is no message */
 .validation-status:empty {
   display: none;
 }
 
+/* success message: green */
 .validation-status.success {
   background-color: #e3f6e8;
   color: #19702f;
 }
 
+/* error message: red */
 .validation-status.error {
   background-color: #fde8e7;
   color: #b81a12;
 }
 
 /* extra form parts: date/time, gender radios */
+/* date/time field: grey background because the user can't edit it */
 #feedback-card input[type="datetime-local"] {
   width: 100%;
   padding: 10px;
@@ -507,6 +638,7 @@ video {
   border-radius: 8px;
 }
 
+/* Gender group: box around the radio buttons */
 #feedback-card fieldset {
   margin-top: 15px;
   padding: 10px 14px 14px 14px;
@@ -514,12 +646,14 @@ video {
   border-radius: 8px;
 }
 
+/* 'Gender' title on the box border */
 #feedback-card legend {
   padding: 0 6px;
   font-weight: bold;
   color: #0b4ea2;
 }
 
+/* radio options sit side by side, normal weight text */
 #feedback-card fieldset label {
   display: inline-block;
   margin-top: 5px;
@@ -528,6 +662,7 @@ video {
   color: #1b2a41;
 }
 
+/* feedback page title and sub-text spacing */
 #main-content > h1 {
   margin-bottom: 5px;
 }
@@ -538,6 +673,7 @@ video {
 }
 
 /* ---------- TOYS.HTML ---------- */
+/* page title area on toys.html */
 #category-header {
   margin-bottom: 20px;
 }
@@ -546,6 +682,7 @@ video {
   color: #5b6b82;
 }
 
+/* filter buttons row */
 #filter-bar {
   display: flex;
   flex-wrap: wrap;
@@ -553,6 +690,7 @@ video {
   margin-bottom: 25px;
 }
 
+/* normal filter button (same look as the home page filters) */
 .filter-btn {
   padding: 8px 20px;
   font-size: 16px;
@@ -564,27 +702,32 @@ video {
   cursor: pointer;
 }
 
+/* blue on hover */
 .filter-btn:hover {
   background-color: #0b4ea2;
   color: white;
 }
 
+/* selected filter is red */
 .filter-btn.active {
   background-color: #e2231a;
   border-color: #e2231a;
   color: white;
 }
 
+/* category name: side padding so text doesn't touch the card edge */
 .category-card h3 {
   padding: 0 12px;
 }
 
+/* short description under the category name */
 .category-card p {
   padding: 0 12px;
   margin: 6px 0 12px 0;
   color: #5b6b82;
 }
 
+/* 'View Category' button: blue pill */
 .category-card .category-btn {
   display: inline-block;
   padding: 8px 20px;
@@ -595,11 +738,13 @@ video {
   border-radius: 20px;
 }
 
+/* red on hover */
 .category-card .category-btn:hover {
   background-color: #e2231a;
 }
 
 /* ---------- ABOUT.HTML ---------- */
+/* intro box at the top of the About page */
 #group-intro {
   background-color: white;
   padding: 25px;
@@ -611,6 +756,7 @@ video {
   margin-top: 8px;
 }
 
+/* 'About This Website' box at the bottom */
 #about-website {
   background-color: white;
   padding: 25px;
@@ -618,11 +764,13 @@ video {
   border-top: 6px solid #ffd500;
 }
 
+/* member name: smaller so long names fit */
 .member-card h3 {
   font-size: 16px;
   margin-bottom: 8px;
 }
 
+/* smaller text; word-wrap stops long emails going outside the card */
 .member-card p {
   font-size: 14px;
   margin-bottom: 4px;
@@ -635,10 +783,12 @@ video {
 
 /* tablet: sidebar moves above the content */
 @media (max-width: 900px) {
+  /* one column: the sidebar moves above the main content */
   body {
     grid-template-columns: 1fr;
   }
 
+  /* header/footer back to a single column */
   #site-header, #site-footer {
     grid-column: 1;
   }
@@ -648,6 +798,7 @@ video {
     border-bottom: 4px solid #e2231a;
   }
 
+  /* sidebar links become a wrapped row of buttons so they don't squash the content */
   #category-menu {
     display: flex;
     flex-wrap: wrap;
@@ -664,10 +815,12 @@ video {
     padding: 6px 14px;
   }
 
+  /* fewer cards per row on tablet */
   .card-grid { grid-template-columns: repeat(3, 1fr); }
   .grid { grid-template-columns: repeat(2, 1fr); }
   .category-row { grid-template-columns: repeat(2, 1fr); }
 
+  /* member cards wrap onto a second row instead of squeezing */
   .members-grid {
     flex-wrap: wrap;
   }
@@ -679,20 +832,24 @@ video {
 
 /* mobile */
 @media (max-width: 600px) {
+  /* header: logo above the nav on phones */
   #site-header {
     flex-direction: column;
     gap: 8px;
   }
 
+  /* nav links wrap and centre if they don't fit */
   #main-nav ul {
     flex-wrap: wrap;
     justify-content: center;
   }
 
+  /* smaller padding and text on phones */
   #main-content { padding: 15px; }
   h1 { font-size: 26px; }
   #hero-banner img { height: 200px; }
 
+  /* every grid becomes 1 column on phones */
   .card-grid,
   .grid,
   .category-row,
@@ -702,6 +859,7 @@ video {
   }
 
   /* these stack on mobile */
+  /* members and detail cards stack vertically on phones */
   .members-grid,
   .toy-details-row {
     flex-direction: column;
